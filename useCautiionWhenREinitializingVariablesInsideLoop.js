@@ -11,7 +11,29 @@ or failing to reset a variable.
 The following function is supposed to create a two-dimensional array with m rows and n columns of zeroes. 
 Unfortunately, it's not producing the expected output because the row variable isn't being reinitialized 
 (set back to an empty array) in the outer loop. 
-Fix the code so it returns a correct 3x2 array of zeroes, which looks like [[0, 0], [0, 0], [0, 0]].*/
+Fix the code so it returns a correct 3x2 array of zeroes, which looks like [[0, 0], [0, 0], [0, 0]].
+
+_____________________________________________________
+Use Caution When Reinitializing Variables Inside a Loop
+This challenge must be solved by redefining the scope of row[].
+Below is an example of the desired matrix.
+
+[
+[0][0],
+[0][0],
+[0][0]
+]
+However the current matrix - seen below - is far from the desired matrix
+
+[
+[0][0][0][0][0][0],
+[0][0][0][0][0][0],
+[0][0][0][0][0][0]
+]
+This error occurs due to the row[] array being declared as a global variable outside of the nested for loop.
+However, to fill the matrix correctly the row[] array must be reset after each iteration of the outer loop.
+
+*/
 
 function zeroArray(m, n) {
   // Creates a 2-D array with m rows and n columns of zeroes
